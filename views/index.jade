@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    //for x in bancos
+        h2=x
+    .container
+        div( class="row")
+            .col-md-12
+                //h1 aqui
+                //#chart(style="width: 600px; height: 400px;")
+                //script.
+                    import * as echarts from 'echarts';
+                    var chartoptions = !{data}
+                    var chart = echarts.init(document.getElementById('chart'));
+                    chart.setOption(chartoptions); 
+                h2.text-center Ranking Bancario(Cifras en Millones Q)
+                
+                canvas(id="myChart")
+                script.                    
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    //console.log(!{datasets});
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+                        data: {
+                            labels: !{fechas},
+                            datasets: !{datasets}
+                        }
+                    
+                    });

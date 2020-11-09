@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .container
+        div( class="row")
+            div(class="col text-center")
+                .col-md-12
+                    h2.text-center Tabla Por Banco
+                    form(action="/cuadro", method="post")
+                        //SELECTOR FECHA
+                        select(id="ss", name="ss")
+                            -for(var i = 0;i<tabla.length;i++){
+                            option(value="#{i}") #{tabla[i]}
+                            -}
+                        hr
+                        button(class="btn btn-primary") Buscar
+                        
+                        
+                hr
+                table(class="table table-hover")
+                    thead(style="text-align: center;")
+                        tr(class="table-success")
+                            th No
+                            th Mes
+                            th Año
+                            th Nombre
+                            th Activo en Millones
+                    tbody
+                        - var a=0
+                        for x in tabla2
+                            - a=a+1
+                            tr
+                                td=a
+                                td=x[2]
+                                td=x[3]
+                                td=x[1]
+                                td=x[0]       
+                    
